@@ -1,5 +1,4 @@
 # Counterfactual Explanations of Bank Failure Prediction Models
-# Bank Failure Prediction Models: Counterfactual Explanations
 
 This repository contains code and resources related to the implementation of counterfactual explanations for bank failure prediction models.
 
