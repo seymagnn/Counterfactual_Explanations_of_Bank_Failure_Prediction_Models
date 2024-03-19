@@ -19,10 +19,7 @@ Bank failure prediction is a crucial task in financial risk management. Predicti
 Counterfactual explanations provide insight into why a particular prediction was made by identifying the minimal changes required to alter the prediction outcome. In the context of bank failure prediction, these explanations can help stakeholders understand the factors contributing to the model's decisions and take appropriate actions to mitigate risks.
 
 
-
-
-
-## Contents
+## Contents <a name="contents"></a>
 
 - `data/`: This directory contains datasets used for training and evaluation.
 - `models/`: Implementation of bank failure prediction models.
@@ -30,6 +27,7 @@ Counterfactual explanations provide insight into why a particular prediction was
 - `examples/`: Examples demonstrating the usage of counterfactual explanations.
 - `docs/`: Additional documentation or research papers related to the project.
 
-## Getting Started
+## Getting Started  <a name="getting-started"></a>
 
-1. Clone this repository to your local machine:
+1. Clone this repository to your local machine.
+2. Download the packages in the libraries folder.
