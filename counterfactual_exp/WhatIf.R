@@ -97,7 +97,6 @@ model_weights2_rf <- ranger(Label ~ .,
                             probability = TRUE)
 
 
-## WhatIf (For banks which are failed)##
 
 label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
 predictor_ext <- Predictor$new(model_weights2_rf)

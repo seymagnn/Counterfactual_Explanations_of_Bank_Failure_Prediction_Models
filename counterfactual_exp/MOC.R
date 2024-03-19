@@ -30,7 +30,7 @@ moc_classif <- MOCClassif$new(
   epsilon = NULL,
   fixed_features = NULL,
   max_changed = NULL,
-  mu = 25L,
+  mu = 20L,
   termination_crit = "gens",
   n_generations = 10L,
   p_rec = 0.71,
@@ -96,7 +96,7 @@ moc_classif <- MOCClassif$new(
   epsilon = NULL,
   fixed_features = NULL,
   max_changed = NULL,
-  mu = 25L,
+  mu = 20L,
   termination_crit = "gens",
   n_generations = 10L,
   p_rec = 0.71,
@@ -143,7 +143,6 @@ model_weights2_rf <- ranger(Label ~ .,
                             probability = TRUE)
 
 
-## WhatIf (For banks which are failed)##
 
 label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
 predictor_ext <- Predictor$new(model_weights2_rf)
@@ -156,7 +155,7 @@ moc_classif <- MOCClassif$new(
   epsilon = NULL,
   fixed_features = NULL,
   max_changed = NULL,
-  mu = 25L,
+  mu = 20L,
   termination_crit = "gens",
   n_generations = 10L,
   p_rec = 0.71,
