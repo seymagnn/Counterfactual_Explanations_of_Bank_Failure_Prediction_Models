@@ -32,7 +32,7 @@ cfactuals <- wi_classif$find_counterfactuals(x_interest, desired_class = "X0", d
 
 # Display counterfactuals data and evaluation
 cfactuals$data
-cfactuals$evaluate()
+whatif_ext <- cfactuals$evaluate()
 
 # Evaluaation metrics
 cfactuals$evaluate_set()
@@ -61,18 +61,18 @@ model_dt_weights2 <- train(
 
 
 label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
-predictor_ext <- Predictor$new(model_dt_weights2, type = "prob")
+predictor_dt <- Predictor$new(model_dt_weights2, type = "prob")
 
 x_interest <- label_1_samples[5L,]
-predictor_ext$predict(x_interest)
+predictor_dt$predict(x_interest)
 
-wi_classif <- WhatIfClassif$new(predictor_ext, n_counterfactuals = 10L)
+wi_classif <- WhatIfClassif$new(predictor_dt, n_counterfactuals = 10L)
 
 cfactuals <- wi_classif$find_counterfactuals(x_interest, desired_class = "0", desired_prob = c(0.5, 1))
 
 cfactuals$data
 
-cfactuals$evaluate()
+whatif_dt <- cfactuals$evaluate()
 
 cfactuals$evaluate_set()
 
@@ -102,16 +102,16 @@ label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
 predictor_ext <- Predictor$new(model_weights2_rf)
 
 x_interest <- label_1_samples[5L,]
-predictor_ext$predict(x_interest)
+predictor_rf$predict(x_interest)
 
-wi_classif <- WhatIfClassif$new(predictor_ext, n_counterfactuals = 10L)
+wi_classif <- WhatIfClassif$new(predictor_rf, n_counterfactuals = 10L)
 
 cfactuals <- wi_classif$find_counterfactuals(x_interest, desired_class = "X0", desired_prob = c(0.5, 1))
 
 
 cfactuals$data
 
-cfactuals$evaluate()
+whatif_rf <- cfactuals$evaluate()
 
 cfactuals$evaluate(show_diff = TRUE)
 

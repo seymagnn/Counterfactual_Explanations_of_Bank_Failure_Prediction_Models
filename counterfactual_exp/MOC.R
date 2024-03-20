@@ -86,13 +86,13 @@ model_dt_weights2 <- train(
 
 
 label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
-predictor_ext <- Predictor$new(model_dt_weights2, type = "prob")
+predictor_dt <- Predictor$new(model_dt_weights2, type = "prob")
 
 x_interest <- label_1_samples[5L,]
-predictor_ext$predict(x_interest)
+predictor_dt$predict(x_interest)
 
 moc_classif <- MOCClassif$new(
-  predictor_ext,
+  predictor_dt,
   epsilon = NULL,
   fixed_features = NULL,
   max_changed = NULL,
@@ -145,13 +145,13 @@ model_weights2_rf <- ranger(Label ~ .,
 
 
 label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
-predictor_ext <- Predictor$new(model_weights2_rf)
+predictor_rf <- Predictor$new(model_weights2_rf)
 
 x_interest <- label_1_samples[5L,]
 predictor_ext$predict(x_interest)
 
 moc_classif <- MOCClassif$new(
-  predictor_ext,
+  predictor_rf,
   epsilon = NULL,
   fixed_features = NULL,
   max_changed = NULL,

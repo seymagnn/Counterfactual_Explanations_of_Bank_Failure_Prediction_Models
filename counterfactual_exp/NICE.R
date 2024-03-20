@@ -60,13 +60,13 @@ model_dt_weights2 <- train(
 
 
 label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
-predictor_ext <- Predictor$new(model_dt_weights2, type = "prob")
+predictor_dt <- Predictor$new(model_dt_weights2, type = "prob")
 
 x_interest <- label_1_samples[5L,]
-predictor_ext$predict(x_interest)
+predictor_dt$predict(x_interest)
 
 nice_classif <- NICEClassif$new(
-  predictor_ext,
+  predictor_dt,
   optimization = "sparsity", # sparsity (default), proximity or plausibility.
   x_nn_correct = FALSE,
   return_multiple = TRUE,
@@ -103,10 +103,10 @@ label_1_samples <- validation_test_data2[validation_test_data2$Label == 1, ]
 predictor_ext <- Predictor$new(model_weights2_rf)
 
 x_interest <- label_1_samples[5L,]
-predictor_ext$predict(x_interest)
+predictor_rf$predict(x_interest)
 
 nice_classif <- NICEClassif$new(
-  predictor_ext,
+  predictor_rf,
   optimization = "proximity", # sparsity (default), proximity or plausibility.
   x_nn_correct = FALSE,
   return_multiple = TRUE,
