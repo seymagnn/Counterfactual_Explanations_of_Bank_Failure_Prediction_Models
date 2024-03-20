@@ -91,6 +91,7 @@ predictor_dt <- Predictor$new(model_dt_weights2, type = "prob")
 x_interest <- label_1_samples[5L,]
 predictor_dt$predict(x_interest)
 
+
 moc_classif <- MOCClassif$new(
   predictor_dt,
   epsilon = NULL,
