@@ -7,10 +7,6 @@ This repository contains code and resources related to the implementation of cou
 1. [Overview](#overview)
 2. [Contents](#contents)
 3. [Getting Started](#getting-started)
-4. [Contributing](#contributing)
-5. [License](#license)
-6. [Acknowledgments](#acknowledgments)
-
 
 ## Overview <a name="overview"></a>
 
