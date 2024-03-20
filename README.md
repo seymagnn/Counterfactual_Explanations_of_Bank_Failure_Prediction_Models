@@ -31,4 +31,5 @@ Counterfactual explanations provide insight into why a particular prediction was
 
 1. Clone this repository to your local machine.
 2. Download the packages in the [libraries](https://github.com/seymagnn/UYIK2024_Counterfactual_Explanations_of_Bank_Failure_Prediction_Models/blob/main/libraries.R) script.
-3. Complete data manipulation operations by pulling metrics from the [arranged](https://github.com/seymagnn/UYIK2024_Counterfactual_Explanations_of_Bank_Failure_Prediction_Models/blob/main/data/arranging_data.R) data script.
+3. Complete data manipulation operations by pulling metrics from the [arranged data](https://github.com/seymagnn/UYIK2024_Counterfactual_Explanations_of_Bank_Failure_Prediction_Models/blob/main/data/arranging_data.R) script.
+4. Splitting data into two subsets in [model partition](https://github.com/seymagnn/UYIK2024_Counterfactual_Explanations_of_Bank_Failure_Prediction_Models/blob/main/model/model_partition.R) script.
