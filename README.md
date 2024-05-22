@@ -19,7 +19,8 @@ Counterfactual explanations provide insight into why a particular prediction was
 
 - `data/`: This directory contains datasets used for training and evaluation.
 - `model/`: Implementation of bank failure prediction models.
-- `counterfactual_exp/`: Code for generating counterfactual explanations.
+- `counterfactual_for_all_models/`: Codes for generating counterfactual explanations.
+- `poster/`: Codes for PDF poster.
 
 ## Getting Started  <a name="getting-started"></a>
 
