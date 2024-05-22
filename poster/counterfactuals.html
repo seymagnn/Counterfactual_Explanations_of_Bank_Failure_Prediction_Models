@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Bank Failure Prediction Model and Counterfactual Explanations: Effective Precautions in Financial Crises</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 36in 48in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 36in;
+height: 48in;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #0b565724;
+color: #0b5657;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #0b565720;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 36in;
+height: calc(48in *  (1 - 0.2 - 0.1 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(48in *  0.2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #0b5657;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #0b5657;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color: #0b5657;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #0b5657;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #0b565775 33%,
+      #0b5657 50%,
+      #0b565775 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 36in;
+height: calc(48in * 0.2);
+position: absolute;
+background-color: #0b5657;
+color: #ffffff90;
+font-family: Special Elite;
+background-image: linear-gradient(#0b5657 50%,#0b5657);
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffff90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(36in * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Special Elite;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000030;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000030;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000030;
+font-size: 35px;
+}
+.envelope {
+color: #00000030;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 36in;
+height: 48in;
+padding: 0cm;
+}
+.main_bottom {
+width: 36in;
+height: calc(48in * 0.1);
+margin-top: calc(48in * (1 - 0.1));
+position: absolute;
+background-color: #0b5657;
+background-image: linear-gradient(#0b5657 10%, #0b5657);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>Bank Failure Prediction Model and Counterfactual Explanations: Effective Precautions in Financial Crises</strong></h1><br>
+<h3 id="author" class="author">
+
+Seyma GUNONU<sup> </sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:seymagunonu@gmail.com" class="email">seymagunonu@gmail.com</a> <br>
+ Gizem ALTUN<sup> </sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:gizemaltn99@gmail.com" class="email">gizemaltn99@gmail.com</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+ </h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup></sup> Department of Statistics, Eskisehir Technical University
+</p>
+</div>
+
+<style>
+#title {
+  font-size: 110pt;
+}
+
+#main-img-left {
+  width: 20%;
+  left: 1in;
+  bottom: 1.0in;
+}
+
+.main {
+  background-color: #0b5657;
+  background-image: linear-gradient(#0b5657 50%, #FFFFFF);
+}
+
+.main_bottom {
+  background-color: #0b5657;
+  background-image: linear-gradient(#FFFFFF 5%, #0b5657);
+}
+
+#author {
+ font-size: 0.9em;
+}
+
+
+#main-img-right {
+  width: 17%;
+  right: 1in;
+  bottom: 1.2in;
+}
+
+#introduction {
+  font-size: 40px;
+  line-height: 0.9;
+}
+
+#methods {
+  font-size: 40px;
+  line-height: 0.9;
+}
+
+#results {
+  font-size: 40px;
+  line-height: 0.9;
+}
+
+#references {
+  font-size: 22px;
+  line-height: 0.9;
+}
+
+#acknowledgement {
+  font-size: 22px;
+  line-height: 0.9;
+}
+
+</style>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Managing risks in the financial sector, such as predicting bank bankruptcy, involves addressing complex challenges like model and variable selection, imbalanced data, and poor out-of-time performance.
+Deep learning models are increasingly used over tree-based models for such predictions <code>(Carmona et al., 2019); Petropoulos et al., 2020); Grinsztajn et al., 2022)</code>.
+Data was collected from the FDIC database using the <strong><code>{fdicdata}</code></strong> package in R <code>(Dar &amp; Pillmore, 2023)</code>.
+The dataset spans <strong>2008-2014</strong> for <strong>in-sample</strong> and <strong>out-of-sample</strong> sets, while models were built using the <strong>2014-2023</strong> <strong>out-of-time</strong> set. Figure <a href="#fig:figures">1</a> includes the banks that failed in the U.S. during these time ranges. The variables are based on <strong>CAMELS</strong> indicators (Capital, Asset Quality, Management Adequacy, Earnings, Liquidity, and Sensitivity to Market Risk).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:figures"></span>
+<img src="failed_banks_by_years.png" alt="Failed Banks in the U.S. by years" width="100%" />
+<p class="caption">
+Figure 1: Failed Banks in the U.S. by years
+</p>
+</div>
+<p>Banks’ health can be monitored through various financial criteria, and bankruptcy predictions often rely on complex, <strong>black box</strong> models, making them hard to interpret.
+In that case, <strong>Counterfactual Explanations (CEs)</strong> offer a solution by explaining how input changes can alter outputs, helping to make these models more understandable <code>(Molnar, 2020)</code>.
+Evaluating CEs is essential to ensure they provide meaningful insights.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>In this study, three different models are used to predict bank failure due to the difference in variances.
+A comparison of the prediction variances of these three methods reveals that Decision Trees provide high variance predictions, Random Forests provide medium variance predictions, and Extra Trees provide low variance predictions <code>(Gogas et al., 2018)</code>.
+To handle imbalanced data, various resampling techniques are employed: <strong>undersampling</strong> reduces majority class samples, <strong>oversampling</strong> increases minority class samples, and <strong>SMOTE</strong> generates synthetic minority samples in Figure <a href="#fig:resamplingmethods">2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:resamplingmethods"></span>
+<img src="resampling_methods.png" alt="Resampling Methods" width="50%" />
+<p class="caption">
+Figure 2: Resampling Methods
+</p>
+</div>
+<p>In critical scenarios, understanding the relationship between predicted outcomes and the input feature values is crucial. The reason behind which changes to the input should lead to the desired change in the output leads to the main purpose of counterfactuals. Counterfactuals are generated by the predicted models. There are different methods for generating CEs and each of them generates counterfactuals with different properties. Therefore, CEs were generated for each model using <strong>Multi - Objective Counterfactual Explanations (MOC)</strong> <code>(Dandl et al., 2020b)</code>, <strong>Nearest Instance Counterfactual Explanations (NICE)</strong> <code>(Brughmans and Martens, 2023)</code> and <strong>WhatIf</strong> <code>(Wexler et al., 2019)</code> methods.</p>
+<p>Unlike the original algorithm, MOC uses mixed-integer evolutionary strategies <code>(Li et al., 2013)</code>. To handle mixed feature spaces and compute crowding distance not only in the objective space but also in the feature space. MOC provides various counterfactual information with different compromises between proposed goals while maintaining feature diversity.</p>
+<span class="math display">\[\begin{equation}
+\min{o(x)} := (o_{valid}(\hat{f}(x&#39;), Y&#39;), o_{prox}(x,x^*), o_{sparse}(x,x^*), o_{plaus}(x,x^*))
+\end{equation}\]</span>
+<p>NICE is a counterfactual annotation method for binary score classifiers. It creates new instances by finding the most similarly correctly classified instance, <span class="math inline">\(x_{nn}\)</span>, and replacing the single feature values of <span class="math inline">\(x^*\)</span> with corresponding values of <span class="math inline">\(x_{nn}\)</span>. If the prediction of the instance with the best reward value aligns with desired predictions, it is considered a counterexample; otherwise, the search continues.</p>
+<span class="math display">\[\begin{equation}
+R(x) = \frac{o_{\text{valid}}(\hat{f}(x_{m-1}, R_{\max}), Y&#39;) - o_{\text{valid}}(\hat{f}(x), Y&#39;)}{O(x, x_{m-1,R_{\max}} \mid x^*)}
+\end{equation}\]</span>
+<p>For a given observation <span class="math inline">\(x^*\)</span>, WhatIf returns the data point most similar to <span class="math inline">\(x^*\)</span> from previous observations <span class="math inline">\(\widetilde{X} = {x \in X : \hat{h}(x) \neq \hat{h}(x^*)}\)</span>, whose predicted class differs from that of <span class="math inline">\(x^*\)</span>.</p>
+<span class="math display">\[\begin{equation}
+x&#39; \in \text{arg} \min_{x \in \widetilde{X}}  d(x,x^*)
+\end{equation}\]</span>
+<p>To ensure the quality of counterfactuals, four metrics are considered across these methods:
+<strong>Sparsity:</strong> Ideal to change a small number of features in the counterfactual.
+<strong>Validity:</strong> The objective is to minimize the distance between the counterfactual <span class="math inline">\(x&#39;\)</span> and the original data point <span class="math inline">\(x\)</span> while ensuring that the model output on the counterfactual matches the desired label <span class="math inline">\(y&#39;Y\)</span>.
+<strong>Proximity:</strong> The distance between factual and counterfactual features should be small.
+<strong>Plausibility:</strong> The CEs should be realistic and close to the data manifold.</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>In study focuses on using Decision Trees, Random Forests, and Extra Trees to make bank failure predictions. What makes this study apart is the usage of a <strong>1-year lag (t-1) period</strong> in the dataset. When examining the overall results of the models, <strong>it was observed that Random Forests and Extra Trees yielded similar and high-quality results, making them the most effective models for predicting bank failures.</strong> Figure <a href="#fig:modelresults">3</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:modelresults"></span>
+<img src="out_of_sample_results.PNG" alt="Accuracy and F1 values for out-of-sample with three different models for each variable group" width="100%" />
+<p class="caption">
+Figure 3: Accuracy and F1 values for out-of-sample with three different models for each variable group
+</p>
+</div>
+<p>In models using oversampling methods, Decision Tree model generally produces more conservative results, while Extra Trees model is more variable. In the use of <strong>SMOTE, Random Forest</strong> model is characterized by <strong>low plausibility</strong> values and <strong>high proximity</strong> standard deviations, indicating low reliability of its results. These findings can provide guidance on the choice of models and methods; <strong>Decision Tree model may be preferable in scenarios seeking stability, while Extra Trees model may be more appropriate in scenarios seeking more diversity.</strong></p>
+<div>
+    <div style="float: left; width: 50%;">
+        <img src="weighting_plot.png" alt="Weighting" style="width: 100%; display: block; margin-bottom: 200px;">
+    </div>
+    <div style="float: right; width: 50%;">
+        <img src="undersampling_plot.png" alt="Undersampling" style="width: 100%; display: block; margin-top: 200px;">
+    </div>
+    <div style="float: left; width: 50%;">
+        <img src="smote_plot.png" alt="SMOTE" style="width: 100%; display: block; margin-bottom: 200px;">
+    </div>
+    <div style="float: right; width: 50%;">
+        <img src="oversampling_plot.png" alt="Oversampling" style="width: 100%; display: block; margin-top: 200px;">
+    </div>
+</div>
+
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p>Brughmans, D., Leyman, P., &amp; Martens, D. (2023). Nice: an algorithm for nearest instance counterfactual explanations. Data mining and knowledge discovery, 1-39.</p>
+<p>Carmona, P., Climent, F., &amp; Momparler, A. (2019). Predicting failure in the US banking sector: An extreme gradient boosting approach. Int. Rev. Econ. Finance, 61, 304-323.</p>
+<p>Dandl, S., Molnar, C., Binder, M., &amp; Bischl, B. (2020, August). Multi-objective counterfactual explanations. In International Conference on Parallel Problem Solving from Nature (pp. 448-469). Cham: Springer International Publishing.</p>
+<p>Dar, U., &amp; Pillmore, B. (2023). fdicdata: Accessing FDIC Bank Data. R package version 0.1.0.</p>
+<p>Gogas, P., Papadimitriou, T., &amp; Agrapetidou, A. (2018). Forecasting bank failures and stress testing: A machine learning approach. Int. J. Forecast., 34(3), 440-455.</p>
+<p>Grinsztajn, L., Oyallon, E., &amp; Varoquaux, G. (2022). Why do tree-based models still outperform deep learning on typical tabular data?. Adv. Neural Inf. Process, 35, 507-520.</p>
+<p>Li, R., Emmerich, M. T., Eggermont, J., Bäck, T., Schütz, M., Dijkstra, J., &amp; Reiber, J. H. (2013). Mixed integer evolution strategies for parameter optimization. Evolutionary computation, 21(1), 29-64.</p>
+<p>Molnar, C. (2020). Interpretable machine learning. Lulu. com.</p>
+<p>Petropoulos, A., Siakoulis, V., Stavroulakis, E., &amp; Vlachogiannakis, N. E. (2020). Predicting bank insolvencies using machine learning techniques. Int. J. Forecast., 36(3), 1092-1113.</p>
+<p>Wexler, J., Pushkarna, M., Bolukbasi, T., Wattenberg, M., Viégas, F., &amp; Wilson, J. (2019). The what-if tool: Interactive probing of machine learning models. IEEE transactions on visualization and computer graphics, 26(1), 56-65.</p>
+</div>
+<div id="acknowledgement" class="section level1">
+<h1>Acknowledgement</h1>
+<p>The work on this paper is financially supported by <strong>the Scientific and Technological Research Council of Turkiye under 2209-A- Research Project Support Programme</strong> for Undergraduate Students grant no. 1649B022303919 and <strong>Eskisehir Technical University Scientific Research Projects Commission</strong> under grant no. 24LÖP006.</p>
+</div>
+
+</div>
+<div class="main">
+<p>From Scenarios to Solutions: Leveraging <strong>Counterfactual Explanations</strong> in Understanding <strong>Bank Failure</strong>!</p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=estu_logo.png>
+<img id="main-img-center" src=qr_code.png>
+<img id="main-img-right" src=>
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>

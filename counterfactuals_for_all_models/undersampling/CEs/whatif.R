@@ -1,0 +1,56 @@
+# Computing what-if counterfactuals for all models
+
+### Decision Tree ###
+
+# Creating a 'predictor' object, which serves as a wrapper for different model types.
+under_predictor_dt <- Predictor$new(model_dt_under2)
+under_counterfactuals_dt <- list()
+
+for (i in 1:nrow(under_filtered_dt)) {
+  x_interest <- under_filtered_dt[i,]
+  print(under_predictor_dt$predict(x_interest))
+  wi_classif <- WhatIfClassif$new(under_predictor_dt, n_counterfactuals = 10L)
+  cfactuals <- wi_classif$find_counterfactuals(x_interest, desired_class = "0", desired_prob = c(0.5, 1))
+  under_counterfactuals_dt[[i]] <- cfactuals$evaluate()
+  cfactuals$predict()
+}
+
+under_all_cfactuals_dt <- do.call(rbind, under_counterfactuals_dt)
+
+
+### Extratrees ###
+
+# Creating a 'predictor' object, which serves as a wrapper for different model types.
+under_predictor_ext <- Predictor$new(model_under2_ext)
+under_counterfactuals_ext <- list()
+
+for (i in 1:nrow(under_filtered_ext)) {
+  x_interest <- under_filtered_ext[i,]
+  prediction <- under_predictor_ext$predict(x_interest)
+  print(prediction)
+  wi_classif <- WhatIfClassif$new(under_predictor_ext, n_counterfactuals = 10L)
+  cfactuals <- wi_classif$find_counterfactuals(x_interest, desired_class = "X0", desired_prob = c(0.5, 1))
+  under_counterfactuals_ext[[i]] <- cfactuals$evaluate()
+  print(cfactuals$predict())
+}
+
+under_all_cfactuals_ext <- do.call(rbind, under_counterfactuals_ext)
+
+
+### Randomforest ###
+
+under_predictor_rf <- Predictor$new(model_under2_rf)
+
+under_counterfactuals_rf <- list()
+
+for (i in 1:nrow(under_filtered_rf)) {
+  x_interest <- under_filtered_rf[i,]
+  prediction <- under_predictor_rf$predict(x_interest)
+  print(prediction)
+  wi_classif <- WhatIfClassif$new(under_predictor_rf, n_counterfactuals = 10L)
+  cfactuals <- wi_classif$find_counterfactuals(x_interest, desired_class = "X0", desired_prob = c(0.5, 1))
+  under_counterfactuals_rf[[i]] <- cfactuals$evaluate()
+  print(cfactuals$predict())
+}
+
+under_all_cfactuals_rf <- do.call(rbind, under_counterfactuals_rf)
