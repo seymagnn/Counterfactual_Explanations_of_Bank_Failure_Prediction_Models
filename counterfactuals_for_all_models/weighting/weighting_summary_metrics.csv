@@ -1,0 +1,37 @@
+"CE_Method","Used_Model","Quality_Metric","Mean_Values","StdDev_Values"
+"MOC","Decision tree","Plausibility",0.00649692303386707,0.00795037135270831
+"MOC","Decision tree","Proximity",0.0282284776137553,0.0276239648399247
+"MOC","Decision tree","Sparsity",1.17101018893042,0.417538318312551
+"MOC","Decision tree","Validity",0.221161230863754,0.248337437803989
+"MOC","Extratrees","Plausibility",0.00944952821531392,0.010190120220835
+"MOC","Extratrees","Proximity",0.0260133809655009,0.0496601585657141
+"MOC","Extratrees","Sparsity",1.41819345547644,0.633511156195543
+"MOC","Extratrees","Validity",0.111002094612014,0.118858807120131
+"MOC","Randomforest","Plausibility",0.00625512733461495,0.00460690640767662
+"MOC","Randomforest","Proximity",0.0291821583469993,0.0567263089807396
+"MOC","Randomforest","Sparsity",1.39777190029655,0.622134860084027
+"MOC","Randomforest","Validity",0.0619766349766108,0.0939895301773535
+"NICE","Decision tree","Plausibility",0.005868077400484,0.00352848033672668
+"NICE","Decision tree","Proximity",0.0217126307697589,0.0186385546845332
+"NICE","Decision tree","Sparsity",1.00440852314475,0.0662745451818973
+"NICE","Decision tree","Validity",0,0
+"NICE","Extratrees","Plausibility",0.00998528090312681,0.00563401753659716
+"NICE","Extratrees","Proximity",0.0129550033470754,0.0154149640743948
+"NICE","Extratrees","Sparsity",1.40553435114504,0.519452530570726
+"NICE","Extratrees","Validity",0,0
+"NICE","Randomforest","Plausibility",0.00830448188706821,0.0035873985887333
+"NICE","Randomforest","Proximity",0.0023639337040676,0.00413857734180343
+"NICE","Randomforest","Sparsity",1.0506329113924,0.248824876392931
+"NICE","Randomforest","Validity",0,0
+"WhatIf","Decision tree","Plausibility",0,0
+"WhatIf","Decision tree","Proximity",0.0449038198229016,0.0215016958841874
+"WhatIf","Decision tree","Sparsity",5,0
+"WhatIf","Decision tree","Validity",0,0
+"WhatIf","Extratrees","Plausibility",0,0
+"WhatIf","Extratrees","Proximity",0.204132976327936,0.0180912975643566
+"WhatIf","Extratrees","Sparsity",5.99973439575033,0.0162962870671291
+"WhatIf","Extratrees","Validity",0,0
+"WhatIf","Randomforest","Plausibility",0,0
+"WhatIf","Randomforest","Proximity",0.206441226952122,0.0172097567602964
+"WhatIf","Randomforest","Sparsity",5.9982905982906,0.0413183885430235
+"WhatIf","Randomforest","Validity",0,0
