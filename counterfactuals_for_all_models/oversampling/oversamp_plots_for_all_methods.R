@@ -47,9 +47,10 @@ ggplot(oversamp_summary_metrics, aes(x = CE_Method, y = Mean_Values, color = Use
 
 
 ggplot(oversamp_summary_metrics, aes(x = CE_Method, y = Mean_Values, color = Used_Model, group = Used_Model)) +
-  geom_line() +
-  geom_point() +
-  geom_errorbar(aes(ymin = Mean_Values - StdDev_Values, ymax = Mean_Values + StdDev_Values), width = 0.2) +
+  geom_line(position = position_dodge(width = 0.5)) +
+  geom_point(position = position_dodge(width = 0.5)) +
+  geom_errorbar(aes(ymin = Mean_Values - StdDev_Values, ymax = Mean_Values + StdDev_Values), width = 0.2,
+                position = position_dodge(width = 0.5)) +
   facet_wrap(~ Quality_Metric, scales = "free_y") +
   labs(x = "CE Method", y = "Mean Values", color = "Used Model", title = "Quality Metrics for CE Methods Using Oversampling Model") +
   theme_minimal() +
