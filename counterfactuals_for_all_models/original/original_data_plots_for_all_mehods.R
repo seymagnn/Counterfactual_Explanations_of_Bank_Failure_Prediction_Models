@@ -1,0 +1,54 @@
+# Visualizition of all ccounterfactuals
+
+load("counterfactuals_for_all_models/original/org_whatif_results.rda")
+load("counterfactuals_for_all_models/original/org_nice_results.rda")
+load("counterfactuals_for_all_models/original/org_moc_results.rda")
+
+org_test_results <- bind_rows(org_whatif_results, org_moc_results, org_nice_results)
+org_test_results$Sample_ID <- 1:nrow(org_test_results)
+org_test_results <- org_test_results[,-5]
+
+org_test_results <- org_test_results %>%
+  mutate(Validity = dist_target,
+         Proximity = dist_x_interest,
+         Sparsity = no_changed,
+         Plausibility = dist_train) %>%
+  pivot_longer(cols = c(Validity, Proximity, Sparsity, Plausibility, minimality), 
+               names_to = "Quality_Metric", 
+               values_to ="Values")
+
+org_test_results <- org_test_results %>% 
+  select(Sample_ID, CE_Method, Used_Model, Quality_Metric, Values, everything())
+
+org_test_results <- org_test_results[,-c(11,12,13,14)]
+write.csv(org_test_results, "org_combined_results.csv", row.names = FALSE)
+
+org_summary_metrics <- org_test_results %>%
+  filter(CE_Method %in% c("WhatIf", "MOC", "NICE"), 
+         Used_Model %in% c("Decision tree", "Extratrees", "Randomforest"), 
+         Quality_Metric %in% c("Proximity", "Sparsity", "Plausibility", "Minimality", "Validity")) %>%
+  group_by(CE_Method, Used_Model, Quality_Metric) %>%
+  summarise(
+    Mean_Values = mean(Values),
+    StdDev_Values = sd(Values)
+  )
+
+write.csv(org_summary_metrics, "org_summary_metrics.csv", row.names = FALSE)
+
+
+ggplot(org_summary_metrics, aes(x = CE_Method, y = Mean_Values, color = Used_Model, group = Used_Model)) +
+  geom_line(position = position_dodge(width = 0.5)) +
+  geom_point(position = position_dodge(width = 0.5)) +
+  geom_errorbar(aes(ymin = Mean_Values - StdDev_Values, ymax = Mean_Values + StdDev_Values), width = 0.2,
+                position = position_dodge(width = 0.5)) +
+  facet_wrap(~ Quality_Metric, scales = "free_y") +
+  labs(x = "CE Method", y = "Mean Values", color = "Used Model", title = "Quality Metrics for CE Methods Using Original Model") +
+  theme_minimal()  +
+  theme(legend.position = "bottom") +
+  theme(legend.title=element_blank())
+
+
+
+
+
+
