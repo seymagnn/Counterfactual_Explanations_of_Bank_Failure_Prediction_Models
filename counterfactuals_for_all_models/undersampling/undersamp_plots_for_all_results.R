@@ -21,11 +21,11 @@ undersamp_test_results <- undersamp_test_results %>%
   select(Sample_ID, CE_Method, Used_Model, Quality_Metric, Values, everything())
 
 undersamp_test_results <- undersamp_test_results[,-c(11,12,13,14)]
-write.csv(undersamp_test_results, "undersamp_combined_results.csv", row.names = FALSE)
+write.csv(undersamp_test_results, "counterfactuals_for_all_models/undersampling/undersamp_combined_results.csv", row.names = FALSE)
 
 undersamp_summary_metrics <- undersamp_test_results %>%
   filter(CE_Method %in% c("WhatIf", "MOC", "NICE"), 
-         Used_Model %in% c("Decision tree", "Extratrees", "Randomforest"), 
+         Used_Model %in% c("Decision tree", "Extra trees", "Random forest"), 
          Quality_Metric %in% c("Proximity", "Sparsity", "Plausibility", "Minimality", "Validity")) %>%
   group_by(CE_Method, Used_Model, Quality_Metric) %>%
   summarise(
@@ -34,7 +34,7 @@ undersamp_summary_metrics <- undersamp_test_results %>%
   )
 
 
-write.csv(undersamp_summary_metrics, "undersamp_summary_metrics.csv", row.names = FALSE)
+write.csv(undersamp_summary_metrics, "counterfactuals_for_all_models/undersampling/undersamp_summary_metrics.csv", row.names = FALSE)
 
 
 

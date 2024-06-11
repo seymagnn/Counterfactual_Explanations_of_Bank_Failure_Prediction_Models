@@ -16,6 +16,7 @@ for (i in 1:nrow(under_filtered_dt)) {
 }
 
 under_all_cfactuals_dt <- do.call(rbind, under_counterfactuals_dt)
+save(under_all_cfactuals_dt, file = "counterfactuals_for_all_models/undersampling/CEs/under_all_cfactuals_dt.rda")
 
 
 ### Extratrees ###
@@ -35,6 +36,7 @@ for (i in 1:nrow(under_filtered_ext)) {
 }
 
 under_all_cfactuals_ext <- do.call(rbind, under_counterfactuals_ext)
+save(under_all_cfactuals_ext, file = "counterfactuals_for_all_models/undersampling/CEs/under_all_cfactuals_ext.rda")
 
 
 ### Randomforest ###
@@ -54,3 +56,4 @@ for (i in 1:nrow(under_filtered_rf)) {
 }
 
 under_all_cfactuals_rf <- do.call(rbind, under_counterfactuals_rf)
+save(under_all_cfactuals_rf, file = "counterfactuals_for_all_models/undersampling/CEs/under_all_cfactuals_rf.rda")

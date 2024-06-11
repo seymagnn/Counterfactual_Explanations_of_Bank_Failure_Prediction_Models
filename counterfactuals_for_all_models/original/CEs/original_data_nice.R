@@ -24,7 +24,7 @@ for (i in 1:nrow(filtered_org_dt)) {
 }
 
 org_nice_cfactuals_dt <- do.call(rbind, org_nice_ce_dt)
-
+save(org_nice_cfactuals_dt, file = "counterfactuals_for_all_models/original/CEs/org_nice_cfactuals_dt.rda")
 
 ### Extratrees ###
 
@@ -49,7 +49,7 @@ for (i in 1:nrow(filtered_org_ext)) {
 }
 
 org_nice_cfactuals_ext <- do.call(rbind, org_nice_ce_ext)
-
+save(org_nice_cfactuals_ext, file = "counterfactuals_for_all_models/original/CEs/org_nice_cfactuals_ext.rda")
 
 ### Randomforest ###
 
@@ -74,5 +74,5 @@ for (i in 1:nrow(filtered_org_rf)) {
 }
 
 org_nice_cfactuals_rf <- do.call(rbind, org_nice_ce_rf)
-
+save(org_nice_cfactuals_rf, file = "counterfactuals_for_all_models/original/CEs/org_nice_cfactuals_rf.rda")
 

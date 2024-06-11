@@ -41,11 +41,12 @@ for (i in 1:nrow(under_filtered_dt)) {
 }
 
 under_moc_cfactuals_dt <- do.call(rbind, under_moc_ce_dt)
+save(under_moc_cfactuals_dt, file = "counterfactuals_for_all_models/undersampling/CEs/under_moc_cfactuals_dt.rda")
 
 ### Extratrees ###
 
 under_predictor_ext <- Predictor$new(model_under2_ext)
-under_filtered_ext <- under_filtered_ext %>% filter(TICRC <= 0.0205772 & NIMY >= -0.794654)
+under_filtered_ext <- under_filtered_ext %>% filter(TICRC <= 0.0205772 & NIMY <= 11.9066 & ROE <= 106.38)
 under_moc_ce_ext <- list()
 
 for (i in 1:nrow(under_filtered_ext)) {
@@ -81,13 +82,13 @@ for (i in 1:nrow(under_filtered_ext)) {
 }
 
 under_moc_cfactuals_ext <- do.call(rbind, under_moc_ce_ext)
-
+save(under_moc_cfactuals_ext, file = "counterfactuals_for_all_models/undersampling/CEs/under_moc_cfactuals_ext.rda")
 
 
 ### Randomforest ###
 
 under_predictor_rf <- Predictor$new(model_under2_rf)
-under_filtered_rf <- under_filtered_rf %>% filter(TICRC <= 0.0205772 & NIMY >= -0.794654)
+under_filtered_rf <- under_filtered_rf %>% filter(TICRC <= 0.0205772 & NIMY >= -0.794654 & ROE <= 106.38)
 under_moc_ce_rf <- list()
 
 for (i in 1:nrow(under_filtered_rf)) {
@@ -123,3 +124,4 @@ for (i in 1:nrow(under_filtered_rf)) {
 }
 
 under_moc_cfactuals_rf <- do.call(rbind, under_moc_ce_rf)
+save(under_moc_cfactuals_rf, file = "counterfactuals_for_all_models/undersampling/CEs/under_moc_cfactuals_rf.rda")

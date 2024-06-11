@@ -1,37 +1,37 @@
 "CE_Method","Used_Model","Quality_Metric","Mean_Values","StdDev_Values"
-"MOC","Decision tree","Plausibility",0.00444829758065258,0.00628597880274918
-"MOC","Decision tree","Proximity",0.0225808055551817,0.025440011221303
-"MOC","Decision tree","Sparsity",1.16946469956475,0.407383927978451
-"MOC","Decision tree","Validity",0.281937143180149,0.247955150262766
-"MOC","Extratrees","Plausibility",0.00761166793643344,0.0104583888417068
-"MOC","Extratrees","Proximity",0.0216819563146229,0.0433187091940731
-"MOC","Extratrees","Sparsity",1.40653594771242,0.624021699371998
-"MOC","Extratrees","Validity",0.115520145434392,0.121016563110446
-"MOC","Randomforest","Plausibility",0.00449632345153942,0.00479661177846061
-"MOC","Randomforest","Proximity",0.0205708552081859,0.0447106738228297
-"MOC","Randomforest","Sparsity",1.35247208931419,0.583857486841673
-"MOC","Randomforest","Validity",0.0649608812435129,0.100989289161444
+"MOC","Decision tree","Plausibility",0.00442794592412542,0.0062735422426386
+"MOC","Decision tree","Proximity",0.0224702671586712,0.0252208206412288
+"MOC","Decision tree","Sparsity",1.16918781870495,0.409636693327693
+"MOC","Decision tree","Validity",0.282411759678658,0.247893582878122
+"MOC","Extra trees","Plausibility",0.00751567890232884,0.0103821899145868
+"MOC","Extra trees","Proximity",0.0209294540457459,0.0421070073530587
+"MOC","Extra trees","Sparsity",1.40457570144748,0.619297422249818
+"MOC","Extra trees","Validity",0.11747834322062,0.121333128832714
+"MOC","Random forest","Plausibility",0.00440556518223642,0.0044646474738037
+"MOC","Random forest","Proximity",0.0201757999899422,0.0448644262966932
+"MOC","Random forest","Sparsity",1.35564789165897,0.590194584772962
+"MOC","Random forest","Validity",0.0652591157474583,0.0999971184752588
 "NICE","Decision tree","Plausibility",0.00285157735405851,0.00414937892766433
 "NICE","Decision tree","Proximity",0.0269106199760322,0.0208953513028058
 "NICE","Decision tree","Sparsity",1.00174825174825,0.0417828408043272
 "NICE","Decision tree","Validity",0,0
-"NICE","Extratrees","Plausibility",0.00380834758498625,0.00614147520931297
-"NICE","Extratrees","Proximity",0.0283747716068771,0.0210299986097617
-"NICE","Extratrees","Sparsity",1.01248699271592,0.11107424011294
-"NICE","Extratrees","Validity",0,0
-"NICE","Randomforest","Plausibility",0.00422449388306425,0.00393706290419927
-"NICE","Randomforest","Proximity",0.0152406283078575,0.019778697016781
-"NICE","Randomforest","Sparsity",1.00734618916437,0.0854337467261843
-"NICE","Randomforest","Validity",0,0
+"NICE","Extra trees","Plausibility",0.00380834758498625,0.00614147520931297
+"NICE","Extra trees","Proximity",0.0283747716068771,0.0210299986097617
+"NICE","Extra trees","Sparsity",1.01248699271592,0.11107424011294
+"NICE","Extra trees","Validity",0,0
+"NICE","Random forest","Plausibility",0.00422449388306425,0.00393706290419927
+"NICE","Random forest","Proximity",0.0152406283078575,0.019778697016781
+"NICE","Random forest","Sparsity",1.00734618916437,0.0854337467261843
+"NICE","Random forest","Validity",0,0
 "WhatIf","Decision tree","Plausibility",0,0
 "WhatIf","Decision tree","Proximity",0.0328825864474214,0.0228146979709163
 "WhatIf","Decision tree","Sparsity",4.99961538461538,0.0196081844903969
 "WhatIf","Decision tree","Validity",0,0
-"WhatIf","Extratrees","Plausibility",0,0
-"WhatIf","Extratrees","Proximity",0.0445360316249362,0.0214267851888019
-"WhatIf","Extratrees","Sparsity",5,0
-"WhatIf","Extratrees","Validity",0,0
-"WhatIf","Randomforest","Plausibility",0,0
-"WhatIf","Randomforest","Proximity",0.0452544849916817,0.0194595788936205
-"WhatIf","Randomforest","Sparsity",5,0
-"WhatIf","Randomforest","Validity",0,0
+"WhatIf","Extra trees","Plausibility",0,0
+"WhatIf","Extra trees","Proximity",0.0445360316249362,0.0214267851888019
+"WhatIf","Extra trees","Sparsity",5,0
+"WhatIf","Extra trees","Validity",0,0
+"WhatIf","Random forest","Plausibility",0,0
+"WhatIf","Random forest","Proximity",0.0452544849916817,0.0194595788936205
+"WhatIf","Random forest","Sparsity",5,0
+"WhatIf","Random forest","Validity",0,0

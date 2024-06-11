@@ -1,37 +1,37 @@
 "CE_Method","Used_Model","Quality_Metric","Mean_Values","StdDev_Values"
-"MOC","Decision tree","Plausibility",0.00952107736309924,0.00401924714568803
-"MOC","Decision tree","Proximity",0.00835543353496075,0.0198076909252108
-"MOC","Decision tree","Sparsity",1.27060931899642,0.515710092163186
-"MOC","Decision tree","Validity",0.382616487455197,0.21211671496836
-"MOC","Extratrees","Plausibility",0.0153718773484153,0.0114214675910192
-"MOC","Extratrees","Proximity",0.0226967259125756,0.0414594667066998
-"MOC","Extratrees","Sparsity",1.45186979879912,0.655563526853993
-"MOC","Extratrees","Validity",0.146755393230435,0.128335587967981
-"MOC","Randomforest","Plausibility",0.0140694636693451,0.0101211921497082
-"MOC","Randomforest","Proximity",0.022901572706209,0.0428510571845895
-"MOC","Randomforest","Sparsity",1.47090372754089,0.671393989733433
-"MOC","Randomforest","Validity",0.0988422590610889,0.121244703343706
+"MOC","Decision tree","Plausibility",0.0100181494193288,0.00480204874344157
+"MOC","Decision tree","Proximity",0.00994918372379759,0.0179009784995302
+"MOC","Decision tree","Sparsity",1.29891304347826,0.551650465076421
+"MOC","Decision tree","Validity",0.357789855072464,0.225773538720076
+"MOC","Extra trees","Plausibility",0.0154754039200497,0.0116045590021577
+"MOC","Extra trees","Proximity",0.0227891969354278,0.0414549893609995
+"MOC","Extra trees","Sparsity",1.45867759907495,0.662371365515896
+"MOC","Extra trees","Validity",0.146025106078733,0.128005279282441
+"MOC","Random forest","Plausibility",0.0139604545745166,0.00998255200423606
+"MOC","Random forest","Proximity",0.0223858548950423,0.0423439859894535
+"MOC","Random forest","Sparsity",1.46541346695526,0.671366155869357
+"MOC","Random forest","Validity",0.0987885347380766,0.120218533465697
 "NICE","Decision tree","Plausibility",0.010033775920034,0.00482483985698689
 "NICE","Decision tree","Proximity",0.00393558356571933,0.00189310202279249
 "NICE","Decision tree","Sparsity",1,0
 "NICE","Decision tree","Validity",0,0
-"NICE","Extratrees","Plausibility",0.0120825168133433,0.0100892272223831
-"NICE","Extratrees","Proximity",0.0350868155398298,0.0227347689197945
-"NICE","Extratrees","Sparsity",1.07287933094385,0.267542365440856
-"NICE","Extratrees","Validity",0,0
-"NICE","Randomforest","Plausibility",0.0118720087396442,0.0101530873495943
-"NICE","Randomforest","Proximity",0.0400735711750414,0.0251527007534845
-"NICE","Randomforest","Sparsity",1.02958015267176,0.185598471485701
-"NICE","Randomforest","Validity",0,0
+"NICE","Extra trees","Plausibility",0.0120825168133433,0.0100892272223831
+"NICE","Extra trees","Proximity",0.0350868155398298,0.0227347689197945
+"NICE","Extra trees","Sparsity",1.07287933094385,0.267542365440856
+"NICE","Extra trees","Validity",0,0
+"NICE","Random forest","Plausibility",0.0118720087396442,0.0101530873495943
+"NICE","Random forest","Proximity",0.0400735711750414,0.0251527007534845
+"NICE","Random forest","Sparsity",1.02958015267176,0.185598471485701
+"NICE","Random forest","Validity",0,0
 "WhatIf","Decision tree","Plausibility",0,0
 "WhatIf","Decision tree","Proximity",0.031065258873285,0.0203676848541208
 "WhatIf","Decision tree","Sparsity",4.98095238095238,0.136855402042825
 "WhatIf","Decision tree","Validity",0,0
-"WhatIf","Extratrees","Plausibility",0,0
-"WhatIf","Extratrees","Proximity",0.066214310170616,0.0242410799232574
-"WhatIf","Extratrees","Sparsity",4.99941634241245,0.0241525423960923
-"WhatIf","Extratrees","Validity",0,0
-"WhatIf","Randomforest","Plausibility",0,0
-"WhatIf","Randomforest","Proximity",0.127617250502551,0.0696513136278294
-"WhatIf","Randomforest","Sparsity",5.39903089036947,0.490332025097224
-"WhatIf","Randomforest","Validity",0,0
+"WhatIf","Extra trees","Plausibility",0,0
+"WhatIf","Extra trees","Proximity",0.066214310170616,0.0242410799232574
+"WhatIf","Extra trees","Sparsity",4.99941634241245,0.0241525423960923
+"WhatIf","Extra trees","Validity",0,0
+"WhatIf","Random forest","Plausibility",0,0
+"WhatIf","Random forest","Proximity",0.127617250502551,0.0696513136278294
+"WhatIf","Random forest","Sparsity",5.39903089036947,0.490332025097224
+"WhatIf","Random forest","Validity",0,0

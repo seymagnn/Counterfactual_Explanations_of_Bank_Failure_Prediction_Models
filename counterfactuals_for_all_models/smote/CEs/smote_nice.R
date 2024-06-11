@@ -25,7 +25,7 @@ for (i in 1:nrow(smote_filtered_dt)) {
 }
 
 smote_nice_cfactuals_dt <- do.call(rbind, smote_nice_ce_dt)
-
+save(smote_nice_cfactuals_dt, file = "counterfactuals_for_all_models/smote/CEs/smote_nice_cfactuals_dt.rda")
 
 ### Extratrees ###
 
@@ -51,7 +51,7 @@ for (i in 1:nrow(smote_filtered_ext)) {
 }
 
 smote_nice_cfactuals_ext <- do.call(rbind, smote_nice_ce_ext)
-
+save(smote_nice_cfactuals_ext, file = "counterfactuals_for_all_models/smote/CEs/smote_nice_cfactuals_ext.rda")
 
 ### Randomforest ###
 
@@ -77,5 +77,5 @@ for (i in 1:nrow(smote_filtered_rf)) {
 }
 
 smote_nice_cfactuals_rf <- do.call(rbind, smote_nice_ce_rf)
-
+save(smote_nice_cfactuals_rf, file = "counterfactuals_for_all_models/smote/CEs/smote_nice_cfactuals_rf.rda")
 
