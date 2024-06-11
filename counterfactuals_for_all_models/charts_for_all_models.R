@@ -39,4 +39,3 @@ ggplot(combined_datasets, aes(x = CE_Method, y = Mean_Values, color = Used_Model
         axis.text.x = element_text(size = 15),
         axis.title.y = element_text(size = 15),
         strip.text = element_text(size = 13))
-
